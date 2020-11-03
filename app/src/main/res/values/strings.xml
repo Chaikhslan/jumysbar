@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestAppOne</string>
+    <string name="min_text">Min</string>
+    <string name="average_text">average</string>
+    <string name="max_text">Max</string>
+    <string name="btn_button">Button</string>
+    <string name="prosto_text">Простое число</string>
+</resources>
