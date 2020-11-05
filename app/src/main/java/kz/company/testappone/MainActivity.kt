@@ -1,6 +1,7 @@
 package kz.company.testappone
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Math.sqrt
@@ -20,21 +21,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttontwo.setOnClickListener {
-            val n: Int = Random.nextInt(2,100)
+            val n: Int = Random.nextInt(2, 100)
             textViewProstoe.text = n.toString()
             textViewProsto.text = isProstoe(n).toString()
         }
 
         button_tree.setOnClickListener {
-            val text: String = "jurttynbalasy"
-            var number:Int = 0
-            val textConvert = text.toCharArray()
-            for (item in textConvert.indices) textConvert[item] = textConvert[item]
+            val str = "Kazak azak".toLowerCase()
+            val characterHashMap: HashMap<Char, Int> = HashMap<Char, Int>()
+            var countNumber = 0
+            for (i in str.indices) {
+                val countNumber = str[i]
+                if (countNumber != ' ') {
+                    if (characterHashMap.containsKey(countNumber)) {
+                        characterHashMap[countNumber] = characterHashMap[countNumber]!! + 1
+                    } else {
+                        characterHashMap[countNumber] = 1
+                    }
+                }
+            }
+            text_count.text = characterHashMap.toString()
         }
     }
 
 
-    private fun isProstoe(n: Int): Boolean {
+    fun isProstoe(n: Int): Boolean {
         if (n < 2) return false
         for (m in 2..sqrt(n.toDouble()).toInt()) {
             if (n % m == 0) return false
